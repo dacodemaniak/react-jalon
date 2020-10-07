@@ -12,17 +12,20 @@ class App extends React.Component {
       {
         id: 1,
         title: 'Item #1',
-        segment: 'props'
+        segment: 'props',
+        viewed: true
       },
       {
         id: 2,
         title: 'Item #2',
-        segment: 'props'
+        segment: 'props',
+        viewed: false
       },
       {
         id: 3,
         title: 'Item #3',
-        segment: 'props'
+        segment: 'props',
+        viewed: false
       }      
     ]
     this.jalon = this.jalons[1]
@@ -35,8 +38,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Jalon jalon={this.jalon} disabled={false} />
-        <JalonComponent jalon={this.jalon} jalons={this.jalons} click={this.showItem} />
+        <JalonComponent jalon={this.jalon} />
       </div>
     )
   }

@@ -36,12 +36,6 @@ export class JalonComponent extends React.Component {
                     <blockquote>{segment}</blockquote>
                     <button type="button" onClick={(event) => this.handleClick(event)}>Check</button>
                 </div>
-                { /* Here goes other jalons from the objects array */}
-                {jalons.map((element, index) => {
-                    return <div key={index} id="{element.id}">
-                        <h3>{element.title}</h3>
-                    </div>
-                })}
             </section>
     }
 }
