@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { ViewedIconComponent } from './components/ViewedIconComponent'
+
 import './css/jalon.css'
 
 const classList = (...classes) => {
@@ -24,17 +26,30 @@ export class JalonComponent extends React.Component {
 
 
     render () {
-        const {id, title, segment} = this.props.jalon
-        const jalons = this.props.jalons
+        const {id, title, segment, viewed} = this.props.jalon
+
+        const cardClasses = () => {
+            return [
+                'card',
+                'jalon',
+                viewed ? 'close' : 'open',
+            ].join(' ')
+        }
+
+        const iconClass = <ViewedIconComponent viewed={viewed} />
+ 
 
         return <section id="jalons">
                 <div 
-                    className="card jalon open"
+                    className={cardClasses()}
                     id={id}
                 >
-                    <h2>{title}</h2>
+                    <h2>{title} {iconClass}</h2>
+                    
                     <blockquote>{segment}</blockquote>
-                    <button type="button" onClick={(event) => this.handleClick(event)}>Check</button>
+                    <button type="button" disabled={viewed} onClick={(event) => this.handleClick(event)}>
+                        {iconClass} { viewed ? 'Viewed' : 'Check'}
+                    </button>
                 </div>
             </section>
     }

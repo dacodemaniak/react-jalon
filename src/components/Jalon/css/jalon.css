@@ -10,6 +10,9 @@
     color: var(--default-color);
 }
 
+.card.close {
+    background-color: var(--checked-background-color);
+}
 .card button {
     border: solid 1px rgba(200, 20, 20, 1);
     border-radius: .5em;

@@ -28,7 +28,7 @@ class App extends React.Component {
         viewed: false
       }      
     ]
-    this.jalon = this.jalons[1]
+    this.jalon = this.jalons[0]
   }
 
   showItem(item) {
