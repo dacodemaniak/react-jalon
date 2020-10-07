@@ -35,10 +35,17 @@ class App extends React.Component {
     console.log(`Got an item ${item} from a component`)
   }
 
+
   render() {
+    const jalonIteration = () => {
+      return this.jalons.map((jalon) => {
+        return <JalonComponent key={jalon.id} jalon={jalon} />
+      })
+    }
+
     return (
       <div>
-        <JalonComponent jalon={this.jalon} />
+        {jalonIteration()}
       </div>
     )
   }
