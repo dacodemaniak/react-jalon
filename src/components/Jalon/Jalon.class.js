@@ -13,16 +13,12 @@ export class JalonComponent extends React.Component {
     constructor(props) {
         super(props)
         this.handleClick = this.handleClick.bind(this)
-        this.isOpen = true
     }
 
     handleClick(event) {
-        this.isOpen = false
-
         const button = event.target
         button.setAttribute('disabled', 'disabled')
         button.textContent = 'Viewed'
-
     }
 
 
@@ -32,16 +28,11 @@ export class JalonComponent extends React.Component {
         const jalons = this.props.jalons
 
         return <section id="jalons">
-                <div className={classList(
-                        'card',
-                        'jalon',
-                        this.isOpen && 'open',
-                        !this.isOpen && 'disabled'
-                    )}
-                id={id}>
-                    <h2 className={classList(
-                        !this.isOpen && 'disabled'
-                    )}>{title}</h2>
+                <div 
+                    className="card jalon open"
+                    id={id}
+                >
+                    <h2>{title}</h2>
                     <blockquote>{segment}</blockquote>
                     <button type="button" onClick={(event) => this.handleClick(event)}>Check</button>
                 </div>
