@@ -6,9 +6,7 @@ import './App.css';
 import {Jalon, JalonViaCreate} from './components/Jalon/Jalon.js'
 
 class App extends React.Component {
-  constructor() {
-    super()
-    this.jalons = [
+  state = {jalons : [
       {
         id: 1,
         title: 'Item #1',
@@ -28,18 +26,30 @@ class App extends React.Component {
         viewed: false
       }      
     ]
-    this.jalon = this.jalons[0]
   }
 
-  showItem(item) {
-    console.log(`Got an item ${item} from a component`)
+  receiveJalon(jalon) {
+    console.log(`State was : ${JSON.stringify(this.state)}`)
+    
+    const { jalons } = this.state
+
+    const index = jalons.findIndex((obj) => obj.id === jalon.id)
+    
+    if (index !== -1) {
+      jalons[index] = jalon
+
+      console.log(`After update, state was : ${JSON.stringify(jalons)} for index value : ${index}`)
+      this.setState(jalons)
+    }
   }
 
 
   render() {
     const jalonIteration = () => {
-      return this.jalons.map((jalon) => {
-        return <JalonComponent key={jalon.id} jalon={jalon} />
+      const { jalons } = this.state
+
+      return jalons.map((jalon) => {
+        return <JalonComponent key={jalon.id} jalon={jalon} changeState={this.receiveJalon.bind(this)} />
       })
     }
 

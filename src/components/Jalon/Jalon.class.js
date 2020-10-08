@@ -21,6 +21,11 @@ export class JalonComponent extends React.Component {
         const button = event.target
         button.setAttribute('disabled', 'disabled')
         button.textContent = 'Viewed'
+
+        // Up event with new state
+        const { jalon } = this.props
+        jalon.viewed = true
+        this.props.changeState(jalon)
     }
 
 
@@ -35,7 +40,7 @@ export class JalonComponent extends React.Component {
                 viewed ? 'close' : 'open',
             ].join(' ')
         }
-
+        
         const iconClass = <ViewedIconComponent viewed={viewed} />
  
 
@@ -47,6 +52,7 @@ export class JalonComponent extends React.Component {
                     <h2>{title} {iconClass}</h2>
                     
                     <blockquote>{segment}</blockquote>
+
                     <button type="button" disabled={viewed} onClick={(event) => this.handleClick(event)}>
                         {iconClass} { viewed ? 'Viewed' : 'Check'}
                     </button>

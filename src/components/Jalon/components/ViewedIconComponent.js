@@ -1,9 +1,9 @@
 import React from 'react'
 
 export class ViewedIconComponent extends React.Component {
-
     render() {
-        const iconClass =  this.props.viewed ? 'icon-checkmark' : 'icon-cross'
+        const { viewed } = this.props
+        const iconClass =  viewed ? 'icon-cross' : 'icon-checkmark'
         return (
             <span className={iconClass}></span>
         )
