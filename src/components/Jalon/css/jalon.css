@@ -1,9 +1,4 @@
-:root {
-    --checked-background-color: rgba(128, 128, 128, 1);
-    --background-color: rgba(59, 59, 59, 1);
-    --default-color: #fff;
-    --disabled-text-color: rgba(120, 120, 120, 1);
-}
+
 .card {
     width: 100%;
     background-color: var(--background-color);

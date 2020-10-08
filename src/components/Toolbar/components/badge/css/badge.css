@@ -1,0 +1,21 @@
+.badge-container {
+    display: flex;
+    border: solid 1px var(--background-color);
+    height: 3em;
+    width: 10em;
+    text-align: center;
+    line-height: 3em;
+    color: #fff;
+    background-color: var(--checked-background-color);
+}
+
+.badge-container span.badge {
+    display: inline-block;
+    background-color: var(--background-color);
+    border-radius: 50%;
+    width: 3em;
+    font-weight: bold;
+    padding: 0.1em;
+    color: inherit;
+    margin-right: .5em;
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 import {JalonComponent} from './components/Jalon/Jalon.class'
+import { ToolbarComponent } from './components/Toolbar/ToolbarComponent';
 
 import './App.css';
 
-import {Jalon, JalonViaCreate} from './components/Jalon/Jalon.js'
+
 
 class App extends React.Component {
   state = {jalons : [
@@ -45,9 +46,9 @@ class App extends React.Component {
 
 
   render() {
+    const { jalons } = this.state
+    
     const jalonIteration = () => {
-      const { jalons } = this.state
-
       return jalons.map((jalon) => {
         return <JalonComponent key={jalon.id} jalon={jalon} changeState={this.receiveJalon.bind(this)} />
       })
@@ -55,6 +56,7 @@ class App extends React.Component {
 
     return (
       <div>
+        <ToolbarComponent jalons={jalons} />
         {jalonIteration()}
       </div>
     )
