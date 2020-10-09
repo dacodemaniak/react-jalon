@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { ViewedIconComponent } from './components/icons/ViewedIconComponent'
+import { RatingForm } from './components/rating-form/RatingFormComponent'
 
 import './css/jalon.css'
 
@@ -49,6 +50,8 @@ export class JalonComponent extends React.Component {
                     
                     <blockquote>{segment}</blockquote>
 
+                    <RatingForm />
+                    
                     <button type="button" disabled={viewed} onClick={(event) => this.handleClick(event)}>
                         {iconClass} { viewed ? 'Viewed' : 'Check'}
                     </button>
