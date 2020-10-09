@@ -12,19 +12,25 @@ class App extends React.Component {
         id: 1,
         title: 'Item #1',
         segment: 'props',
-        viewed: true
+        viewed: true,
+        comment: 'Nothing special',
+        rate: 5
       },
       {
         id: 2,
         title: 'Item #2',
         segment: 'props',
-        viewed: false
+        viewed: false,
+        comment: '',
+        rate: 0
       },
       {
         id: 3,
         title: 'Item #3',
         segment: 'props',
-        viewed: false
+        viewed: false,
+        comment: '',
+        rate: 0
       }      
     ]
   }

@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { ViewedIconComponent } from './components/icons/ViewedIconComponent'
+
 import { RatingForm } from './components/rating-form/RatingFormComponent'
+import { ViewedIconComponent } from './components/icons/ViewedIconComponent'
 
 import './css/jalon.css'
 
@@ -18,10 +19,9 @@ export class JalonComponent extends React.Component {
         this.handleClick = this.handleClick.bind(this)
     }
 
-    handleClick(event) {
+    handleClick(jalon) {
+        console.log(`Got an event from RatingComponent !`)
         // Up event with new state
-        const { jalon } = this.props
-        jalon.viewed = true
         this.props.changeState(jalon)
     }
 
@@ -29,6 +29,7 @@ export class JalonComponent extends React.Component {
 
     render () {
         const {id, title, segment, viewed} = this.props.jalon
+        const iconClass = <ViewedIconComponent viewed={viewed} />
 
         const cardClasses = () => {
             return [
@@ -38,7 +39,7 @@ export class JalonComponent extends React.Component {
             ].join(' ')
         }
         
-        const iconClass = <ViewedIconComponent viewed={viewed} />
+        
  
 
         return <section id="jalons">
@@ -50,11 +51,8 @@ export class JalonComponent extends React.Component {
                     
                     <blockquote>{segment}</blockquote>
 
-                    <RatingForm />
-                    
-                    <button type="button" disabled={viewed} onClick={(event) => this.handleClick(event)}>
-                        {iconClass} { viewed ? 'Viewed' : 'Check'}
-                    </button>
+                    <RatingForm jalon={ this.props.jalon } changeState={this.handleClick} />
+
                 </div>
             </section>
     }
