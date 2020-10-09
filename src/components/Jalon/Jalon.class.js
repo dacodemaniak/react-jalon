@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ViewedIconComponent } from './components/ViewedIconComponent'
+import { ViewedIconComponent } from './components/icons/ViewedIconComponent'
 
 import './css/jalon.css'
 
@@ -18,10 +18,6 @@ export class JalonComponent extends React.Component {
     }
 
     handleClick(event) {
-        const button = event.target
-        button.setAttribute('disabled', 'disabled')
-        button.textContent = 'Viewed'
-
         // Up event with new state
         const { jalon } = this.props
         jalon.viewed = true
