@@ -3,36 +3,18 @@ import {JalonComponent} from './components/Jalon/Jalon.class'
 import { ToolbarComponent } from './components/Toolbar/ToolbarComponent';
 
 import './App.css';
+import { Layout } from './components/Layout/Layout';
 
 
 
 class App extends React.Component {
-  state = {jalons : [
-      {
-        id: 1,
-        title: 'Item #1',
-        segment: 'props',
-        viewed: true,
-        comment: 'Nothing special',
-        rate: 5
-      },
-      {
-        id: 2,
-        title: 'Item #2',
-        segment: 'props',
-        viewed: false,
-        comment: '',
-        rate: 0
-      },
-      {
-        id: 3,
-        title: 'Item #3',
-        segment: 'props',
-        viewed: false,
-        comment: '',
-        rate: 0
-      }      
-    ]
+  state = {jalons : []}
+
+  componentDidMount() {
+    const persistentDatas = localStorage.getItem('jalons')
+    if (persistentDatas) {
+      this.setState({jalons: JSON.parse(persistentDatas)})
+    }
   }
 
   receiveJalon(jalon) {
