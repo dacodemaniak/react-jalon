@@ -3,6 +3,8 @@ import { BadgeComponent } from './components/badge/BadgeComponent'
 
 export class ToolbarComponent extends React.Component {
     render() {
+        console.log(`Component state was updated`)
+
         this.statistic = this._statistize()
 
         const badges = []
@@ -16,6 +18,11 @@ export class ToolbarComponent extends React.Component {
         return <div className="container">
             { badges }
         </div>
+    }
+    componentDidUpdate() {
+        console.log(`Now, we can do what we need after componenent was updated`)
+        const { jalons } = this.props
+        localStorage.setItem('jalons', JSON.stringify(jalons))
     }
 
     _statistize() {

@@ -1,9 +1,8 @@
 import React from 'react';
 import {JalonComponent} from './components/Jalon/Jalon.class'
 import { ToolbarComponent } from './components/Toolbar/ToolbarComponent';
-
+import CreateJalon from './components/Jalon/CreateJalon'
 import './App.css';
-import { Layout } from './components/Layout/Layout';
 
 
 
@@ -42,10 +41,22 @@ class App extends React.Component {
       })
     }
 
+    const form = () => {
+      if (!jalons.length) {
+        return CreateJalon()
+      }
+      return null
+    }
+
+    
     return (
       <div>
         <ToolbarComponent jalons={jalons} />
-        {jalonIteration()}
+
+        { form() }
+
+        
+        { jalonIteration() }
       </div>
     )
   }
