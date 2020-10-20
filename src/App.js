@@ -7,13 +7,22 @@ import './App.css';
 
 
 class App extends React.Component {
-  state = {jalons : []}
+  state = {
+    jalons : [],
+    fetchError: null,
+
+  }
 
   componentDidMount() {
-    const persistentDatas = localStorage.getItem('jalons')
-    if (persistentDatas) {
-      this.setState({jalons: JSON.parse(persistentDatas)})
-    }
+    fetch(
+      `http://localhost:8080`
+    ).then((response) => response.json())
+    .then((result) => {
+      console.log(`Received ${JSON.stringify(result)} from backend`)
+      this.setState({jalons: result})
+    }, (error) => {
+      this.setState({fetchError: error})
+    })
   }
 
   receiveJalon(jalon) {
@@ -41,22 +50,14 @@ class App extends React.Component {
       })
     }
 
-    const form = () => {
-      if (!jalons.length) {
-        return CreateJalon()
-      }
-      return null
-    }
-
     
     return (
       <div>
         <ToolbarComponent jalons={jalons} />
-
-        { form() }
-
         
         { jalonIteration() }
+
+        <CreateJalon />
       </div>
     )
   }
